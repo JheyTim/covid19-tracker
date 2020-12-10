@@ -10,7 +10,7 @@ const Map = (props) => {
     });
 
     let map = props.data ? (
-        <MapContainer center={[0, 0]} zoom={3} minZoom={3} maxZoom={10}>
+        <MapContainer center={[0, 0]} zoom={3} minZoom={3} maxZoom={10} maxBounds={[[180, -180], [-180, 180]]}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' noWrap={true} />
             {props.data.map(info => {
                 console.log(info.countryInfo._id)
@@ -18,12 +18,10 @@ const Map = (props) => {
                     <Marker key={info.country} position={[info.countryInfo.lat, info.countryInfo.long]} icon={icon}>
                     <Popup>
                         <div className={classes.Popup}>
-                            <div className={classes.Flag}>
-                                <img src={info.countryInfo.flag} alt={info.country + " flag" }/>
-                            </div>
+                            <img src={info.countryInfo.flag} alt={info.country + " flag" }/>
                             <h2>{info.country}</h2>
                             <ul>
-                                <li><strong>Confiremd:</strong> {info.cases}</li>
+                                <li><strong>Confirmed:</strong> {info.cases}</li>
                                 <li><strong>Deaths:</strong> {info.deaths}</li>
                                 <li><strong>Recovered:</strong> {info.recovered}</li>
                                 <li><strong>Last Update:</strong> {new Date(info.updated).toLocaleString()}</li>

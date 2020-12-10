@@ -3,10 +3,9 @@
     padding: 5px;
 }
 
-.Flag {
-    height: 80%;
-    width: 100%;
-    overflow: hidden;
+img {
+    height: auto;
+    max-width: 100%;
 }
 
 ul {
