@@ -3,27 +3,36 @@ import React, { Component } from 'react';
 import Map from './components/Map/Map';
 import Navigation from './components/Navigation/Navigation';
 import 'leaflet/dist/leaflet.css';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { initInfo } from './store/actions/covid19';
 
 class App extends Component {
 
-  state = {
-    data: []
-  }
-  
-  async componentDidMount() {
-    const res = await axios.get("https://corona.lmao.ninja/v2/countries");
-    this.setState({ data: res.data })
+  componentDidMount() {
+    this.props.onInitInfo();
   }
 
   render () {
     return (
       <div className="App">
         <Navigation />
-        <Map data={this.state.data}/>
+        <Map data={this.props.info}/>
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    info: state.data
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onInitInfo: () => dispatch(initInfo())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
