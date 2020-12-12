@@ -2,8 +2,14 @@ import React, {Fragment, Component } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import classes from './Map.module.css';
+import { connect } from 'react-redux';
+import { initInfo } from '../../store/actions/covid19';
 
 class Map extends Component {
+    
+  componentDidMount() {
+    this.props.onInitInfo();
+  }
     
     render () {
         const icon = new Icon({
@@ -46,4 +52,17 @@ class Map extends Component {
     }
 }
 
-export default Map;
+
+const mapStateToProps = state => {
+    return {
+      data: state.data
+    }
+}
+  
+const mapDispatchToProps = dispatch => {
+    return {
+      onInitInfo: () => dispatch(initInfo())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

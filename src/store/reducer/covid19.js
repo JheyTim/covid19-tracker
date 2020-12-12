@@ -1,7 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    data: []
+    data: [],
+    statistics: {},
+    loading: false
 }
 
 const reducer = (state = initialState, actions) => {
@@ -11,6 +13,21 @@ const reducer = (state = initialState, actions) => {
                 ...state,
                 data: actions.info
             };
+        case actionTypes.SET_STAT:
+            return {
+                ...state,
+                statistics: actions.stat
+            }
+        case actionTypes.FETCH_START:
+            return{
+                ...state,
+                loading: true
+            }
+        case actionTypes.FETCH_SUCCESS:
+            return{
+                ...state,
+                loading: false
+            }
         default: 
             return state
     }

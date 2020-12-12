@@ -1,0 +1,33 @@
+.TrackerStats {
+    color: white;
+    background-color: grey;
+    border-top: solid 1px black;
+}
+
+.List {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.TrackerStat {
+  
+    font-size: 2em;
+    text-align: center;
+    padding: .5em;
+    border-right: solid 1px grey;
+    border-bottom: solid 1px grey;
+  
+  
+}
+
+.TrackerStatPrimary {
+    margin: 0;
+}
+
+.TrackerStatSecondary {
+    font-size: .5em;
+    margin: .8em 0 0;
+}
