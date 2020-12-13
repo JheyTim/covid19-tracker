@@ -1,4 +1,4 @@
-import React, {Fragment, Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import classes from './Map.module.css';
@@ -31,7 +31,7 @@ class Map extends Component {
                                 <div className={classes.Popup}>
                                     <img src={info.countryInfo.flag} alt={info.country + " flag" }/>
                                     <h2>{info.country}</h2>
-                                    <ul>
+                                    <ul className={classes.MapUL}>
                                         <li><strong>Confirmed:</strong> {commafy(info.cases)}</li>
                                         <li><strong>Deaths:</strong> {commafy(info.deaths)}</li>
                                         <li><strong>Recovered:</strong> {commafy(info.recovered)}</li>

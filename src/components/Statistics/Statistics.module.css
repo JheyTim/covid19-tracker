@@ -2,25 +2,21 @@
     color: white;
     background-color: grey;
     border-top: solid 1px black;
+    width: 100%;
 }
 
 .List {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     list-style: none;
     padding: 0;
     margin: 0;
 }
   
 .TrackerStat {
-  
     font-size: 2em;
     text-align: center;
     padding: .5em;
     border-right: solid 1px grey;
     border-bottom: solid 1px grey;
-  
-  
 }
 
 .TrackerStatPrimary {
@@ -30,4 +26,12 @@
 .TrackerStatSecondary {
     font-size: .5em;
     margin: .8em 0 0;
+}
+
+
+@media (min-width: 1000px) {
+    .List {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }

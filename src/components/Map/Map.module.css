@@ -8,12 +8,12 @@ img {
     max-width: 100%;
 }
 
-ul {
+.MapUL {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-h2 {
+.Popup h2 {
     text-align: center;
 }
