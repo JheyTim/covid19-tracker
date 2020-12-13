@@ -12,6 +12,24 @@ class Statistics extends Component{
 
     render() {
         const dashboardStats = [
+          {
+            primary: {
+              label: 'Today\'s Cases',
+              value: commafy(Math.trunc(this.props.data?.todayCases))
+            }
+          },
+          {
+            primary: {
+              label: 'Today\'s Deaths',
+              value: commafy(Math.trunc(this.props.data?.todayDeaths))
+            }
+          },
+          {
+            primary: {
+              label: 'Today\'s Recovered',
+              value: commafy(Math.trunc(this.props.data?.todayRecovered))
+            }
+          },
             {
               primary: {
                 label: 'Total Cases',
@@ -34,12 +52,42 @@ class Statistics extends Component{
             },
             {
               primary: {
+                label: 'Total Active',
+                value: commafy(Math.trunc(this.props.data?.active))
+              },
+              secondary: {
+                label: 'Per 1 Million',
+                value: commafy(Math.trunc(this.props.data?.activePerOneMillion))
+              }
+            },
+            {
+              primary: {
+                label: 'Total Recovered',
+                value: commafy(Math.trunc(this.props.data?.recovered))
+              },
+              secondary: {
+                label: 'Per 1 Million',
+                value: commafy(Math.trunc(this.props.data?.recoveredPerOneMillion))
+              }
+            },
+            {
+              primary: {
                 label: 'Total Tests',
                 value: commafy(Math.trunc(this.props.data?.tests))
               },
               secondary: {
                 label: 'Per 1 Million',
                 value: commafy(Math.trunc(this.props.data?.testsPerOneMillion))
+              }
+            },
+            {
+              primary: {
+                label: 'Total Critical',
+                value: commafy(Math.trunc(this.props.data?.critical))
+              },
+              secondary: {
+                label: 'Per 1 Million',
+                value: commafy(Math.trunc(this.props.data?.criticalPerOneMillion))
               }
             }
         ];
@@ -58,11 +106,10 @@ class Statistics extends Component{
                               </p>
                               <strong>{ primary.label }</strong>
                           
-                          
-                              <p className={classes.TrackerStatSecondary}>
+                              {secondary ? <p className={classes.TrackerStatSecondary}>
                                   { secondary.value }
                                   <strong> { secondary.label }</strong>
-                              </p>
+                              </p>: null}
                       </li>
                       );
                   })}
