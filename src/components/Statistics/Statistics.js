@@ -70,7 +70,6 @@ class Statistics extends Component{
             </div>
           )
         }
-        
         return stat
     }
 }
