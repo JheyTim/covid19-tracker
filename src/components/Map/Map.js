@@ -4,6 +4,7 @@ import { Icon } from 'leaflet';
 import classes from './Map.module.css';
 import { connect } from 'react-redux';
 import { initInfo } from '../../store/actions/covid19';
+import { commafy } from '../../util/commafy';
 
 class Map extends Component {
     
@@ -31,9 +32,9 @@ class Map extends Component {
                                     <img src={info.countryInfo.flag} alt={info.country + " flag" }/>
                                     <h2>{info.country}</h2>
                                     <ul>
-                                        <li><strong>Confirmed:</strong> {info.cases}</li>
-                                        <li><strong>Deaths:</strong> {info.deaths}</li>
-                                        <li><strong>Recovered:</strong> {info.recovered}</li>
+                                        <li><strong>Confirmed:</strong> {commafy(info.cases)}</li>
+                                        <li><strong>Deaths:</strong> {commafy(info.deaths)}</li>
+                                        <li><strong>Recovered:</strong> {commafy(info.recovered)}</li>
                                         <li><strong>Last Update:</strong> {new Date(info.updated).toLocaleString()}</li>
                                     </ul>
                                 </div>

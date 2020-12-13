@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { initStat } from '../../store/actions/covid19';
 import { connect } from 'react-redux';
 import classes from './Statistics.module.css';
+import { commafy } from '../../util/commafy';
 
 class Statistics extends Component{
 
@@ -9,59 +10,36 @@ class Statistics extends Component{
         this.props.onInitStat();
     }
 
-    commafy = (value) => {
-        let numberString = `${value}`;
-      
-        numberString = numberString.split('');
-      
-        numberString.reverse();
-      
-        numberString = numberString.reduce((prev, current, index) => {
-            const shouldComma = (index + 1) % 3 === 0 && index + 1 < numberString.length;
-            let updatedValue = `${prev}${current}`;
-            if ( shouldComma ) {
-                updatedValue = `${updatedValue},`;
-            }
-            return updatedValue;
-        }, '');
-      
-        numberString = numberString.split('');
-        numberString.reverse()
-        numberString = numberString.join('');
-      
-        return numberString;
-    }
-
     render() {
         const dashboardStats = [
             {
               primary: {
                 label: 'Total Cases',
-                value: this.commafy(Math.trunc(this.props.data?.cases))
+                value: commafy(Math.trunc(this.props.data?.cases))
               },
               secondary: {
                 label: 'Per 1 Million',
-                value: this.commafy(Math.trunc(this.props.data?.casesPerOneMillion))
+                value: commafy(Math.trunc(this.props.data?.casesPerOneMillion))
               }
             },
             {
               primary: {
                 label: 'Total Deaths',
-                value: this.commafy(Math.trunc(this.props.data?.deaths))
+                value: commafy(Math.trunc(this.props.data?.deaths))
               },
               secondary: {
                 label: 'Per 1 Million',
-                value: this.commafy(Math.trunc(this.props.data?.deathsPerOneMillion))
+                value: commafy(Math.trunc(this.props.data?.deathsPerOneMillion))
               }
             },
             {
               primary: {
                 label: 'Total Tests',
-                value: this.commafy(Math.trunc(this.props.data?.tests))
+                value: commafy(Math.trunc(this.props.data?.tests))
               },
               secondary: {
                 label: 'Per 1 Million',
-                value: this.commafy(Math.trunc(this.props.data?.testsPerOneMillion))
+                value: commafy(Math.trunc(this.props.data?.testsPerOneMillion))
               }
             }
         ];
