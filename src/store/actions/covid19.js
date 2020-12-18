@@ -30,17 +30,16 @@ export const setStatInfo = stat => {
 export const initInfo = () => {
     return dispatch => {
         dispatch(fetchStart());
+        dispatch(initStat());
         axios.get('https://corona.lmao.ninja/v3/covid-19/countries')
             .then( response => {
                 dispatch(setInfo(response.data));
-                dispatch(fetchSuccess());
             })
     }
 }
 
 export const initStat = () => {
     return dispatch => {
-        dispatch(fetchStart());
         axios.get('https://corona.lmao.ninja/v3/covid-19/all')
             .then( response => {
                 dispatch(setStatInfo(response.data));
