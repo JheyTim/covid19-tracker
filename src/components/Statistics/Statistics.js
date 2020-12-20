@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './Statistics.module.css';
 import { commafy } from '../../util/commafy';
+import { initStat } from '../../store/actions/covid19';
 
-class Statistics extends Component{
+class Statistics extends Component {
+
+  componentDidMount() {
+    this.props.onInitStat();
+  }
+
+
     render() {
         const dashboardStats = [
           {
@@ -122,4 +129,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Statistics);
+const mapDispatchToProps = dispatch => {
+  return {
+    onInitStat: () => dispatch(initStat())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Statistics);

@@ -1,0 +1,12 @@
+.GraphContainer {
+    display: block;
+}
+
+@media (min-width: 1000px) {
+    .GraphContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 33vh;
+        width: 33%;
+    }
+}

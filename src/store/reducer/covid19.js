@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     data: [],
     statistics: {},
-    loading: false
+    loading: false,
+    graphData: {}
 }
 
 const reducer = (state = initialState, actions) => {
@@ -17,6 +18,11 @@ const reducer = (state = initialState, actions) => {
             return {
                 ...state,
                 statistics: actions.stat
+            }
+        case actionTypes.SET_GRAPH_STAT:
+            return {
+                ...state,
+                graphData: actions.data
             }
         case actionTypes.FETCH_START:
             return{
